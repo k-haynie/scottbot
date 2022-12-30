@@ -1,6 +1,8 @@
 import csv, re
 rows = []
 
+# data from https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines
+
 with open("office_data.csv", encoding="utf-8") as file:
     reader = csv.reader(file)
 
