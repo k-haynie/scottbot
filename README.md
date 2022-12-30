@@ -27,14 +27,26 @@ The notebook uploads its produced model to [HuggingFace](https://huggingface.co/
 - [Replit account](https://replit.com/)
 - [UptimeRobot account](https://uptimerobot.com/)
 
-## Usage
+## Usage/Tutorial
 The first order of business is getting data to feed to the model. I used a dataset I found on Kaggle, but many other sites have `.csv` files of dialogue from a variety of shows, movies, and games. Keep in mind that `parse_data.py` was specifically tailored to the dataset I was using; it may require a little editing to work for your specific dataset. Once you have a satisfactory dataset, upload your `.csv` file and the `scottbot.ipynb` file to Google Drive.
 
-Before running the notebook, ensure that it can find your dialogue file by changing the `data = pd.read_csv("filename.csv")` to your particular filename along with the the value of `"CHARACTER_NAME"` to the appropriate name. Fun parameters to mess with are the number of lines included in line context (by default 7, denoted by variable `n`), `args.num_train_epochs`, `args.per_gpu_train_batch_size`, and `args.seed`. If you want speedier training or have little extra Google Drive space, I recommend changign the tokenizer and model to `microsoft/DialoGPT-small` (references inside of the `Args` class will have to be changed as well). At the very end of the notebook, there is authorization to provide: an email, your HuggingFace account name, a name for your model, and a HuggingFace API key (found under the Access Tokens tab in your HuggingFace Account settings. 
+Before running the notebook, ensure that it can find your dialogue file by changing the `data = pd.read_csv("filename.csv")` to your particular filename along with the the value of `"CHARACTER_NAME"` to the appropriate name. Fun parameters to mess with are the number of lines included in line context (by default 7, denoted by variable `n`), `args.num_train_epochs`, `args.per_gpu_train_batch_size`, and `args.seed`. If you want speedier training or have little extra Google Drive space, I recommend changign the tokenizer and model to `microsoft/DialoGPT-small` (references inside of the `Args` class will have to be changed as well). At the very end of the notebook, there is authorization to provide: an email, your HuggingFace account name, a name for your model, and a HuggingFace API key (found under the Access Tokens tab in your HuggingFace Account settings). Then connect to a runtime and hit `run all`. Depending on the size of the your dataset and the model you are using, training can take anywhere between a couple of minutes to a few hours. (With my dataset and parameters, the training took almost 3 hours).
 
+After your model is trained, it will be uploaded to your HuggingFace account. My model was detected as text generation by default (which is actually a finish-the-sentence model) and if that is what you want to experiment with, you can use the files as they are. But because I wanted a question/response-based chatbot, I needed to add a `README.md` with a tag denoting the model as `conversational`, as is visible in the model file in this repo. The HuggingFace website provides a GUI for its inference API, which is more than enough for casual testing. But to create a discord bot, you will have to use the discord developer portal to create a new bot.
 
-TODO: 
-- source of data, parsing
-- breakdown of notebook, training, args
-- hosting on huggingface, generational/conversational
-- bots with replit/uptime robot
+On the discord developer portal, as soon as you create a new bot, you will be shown a bot token. Be sure and copy it, as it is necessary to link the bot to your conversational model. On Replit, you can find a button to create a new NodeJS repl; I have included my replit files in the `repl.it` folder. `index.js` handles bot activity, while `server.js` handles keeping the bot online (The package files just add the necessary javascript libraries). To make the repl run, you will need to access the `Secrets` tab and set two secrets: the first one, `DISCORD_TOKEN`, is the bot token you copied earlier. The second, `HF_TOKEN`, is the API key that you added to the end of the `scottbot.ipynb` file. Once everything is configured, you should be able to hit the green "Run" button to launch your repl.
+
+After your repl is launched, a webview should open with a cursory webpage declaring that your bot is alive. If you log in to UptimeRobot, you can add a new monitor by using the webview's URL and the `http(s)` monitor option to keep your repl (and by proxy your bot) up and running even after you close your repl tab.
+
+Congratulations! You have successfully created an AI chatbot!
+
+### Where Michael Goes From Here
+I would love to see any cool modifications of this project! Feel free to fork this repo and create a pull request. If you are interested in seeing any future developments of this project, don't forget to star this repo. I have a few ideas for extending the functionality of the bot that I have yet to implement. :)
+
+## Acknowledgements
+I could not have even begun the project without the aid of these talented people:
+- [Fabrizio Cominetti](https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines) and his concise dataset
+- [Lynn Zheng](https://www.freecodecamp.org/news/make-a-discord-bot-that-talks-like-rick-sanchez/) and her AI expertise
+- [Beau Carnes](https://www.freecodecamp.org/news/create-a-discord-bot-with-javascript-nodejs/) and his JavaScript demos
+- [Rostyslav Neskorozhenyi](https://towardsdatascience.com/make-your-own-rick-sanchez-bot-with-transformers-and-dialogpt-fine-tuning-f85e6d1f4e30), the origin of the specialized chatbot idea
+
