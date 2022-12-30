@@ -10,6 +10,19 @@ After I had a prepared dialogue `.csv` file, I loaded up a jupyter notebook I fo
 
 The notebook uploads its produced model to [HuggingFace](https://huggingface.co/Chae/scottbot_med), where there is a built-in API to run the model. But I wanted a fancier and more intuitive way to interact with the AI, so I created a discord bot and am hosting it on [replit](https://replit.com/), which I keep alive through the services of [uptime robot](https://uptimerobot.com/). 
 
+## Requirements:
+#### Parsing:
+- Kaggle account (downloading datasets)
+- Python 3.0+ and re 
+#### Training:
+- Google Drive (minimum 4GB empty space)
+- Google Colab
+- HuggingFace account
+#### Bot Creation:
+- Discord account
+- Replit account
+- Uptime Robot account
+
 
 TODO: 
 - source of data, parsing
