@@ -8,20 +8,27 @@ Regarding the model itself, the model files I have included are the result of tr
 
 After I had a prepared dialogue `.csv` file, I loaded up a jupyter notebook I found on [freecodecamp](https://www.freecodecamp.org/news/make-a-discord-bot-that-talks-like-rick-sanchez/) to train the model. After a few training sessions I tweaked the parameters until I was satisfied with the results, settling on the `gpt2-medium` model as a base (instead of the tutorial's `gtp2-small`) and reducing the `per_gpu_train_batch_size` to 2 to accommodate the RAM I was allotted in Google Colab. Even with the reduced batch size, I had to delete quite a few of the saved checkpoints to preserve room in my Google Drive as the training was taking place - each new checkpoint was around 3.5 GB in size. So if you have little Google Drive space to spare, I would recommend changing the `save_steps` parameters in the notebook. 
 
-The notebook uploads its produced model to [HuggingFace](https://huggingface.co/Chae/scottbot_med), where there is a built-in API to run the model. But I wanted a fancier and more intuitive way to interact with the AI, so I created a discord bot and am hosting it on [replit](https://replit.com/), which I keep alive through the services of [uptime robot](https://uptimerobot.com/). 
+The notebook uploads its produced model to [HuggingFace](https://huggingface.co/Chae/scottbot_med), where there is a built-in API to run the model. But I wanted a fancier and more intuitive way to interact with the AI, so I created a discord bot and am hosting it on [replit](https://replit.com/), which I keep alive through the services of [UptimeRobot](https://uptimerobot.com/). 
 
 ## Requirements:
 #### Parsing:
-- Kaggle account (downloading datasets)
-- Python 3.0+ and re 
+- [Kaggle account](https://www.kaggle.com/) (downloading datasets)
+- [Python 3+](https://www.python.org/downloads/release/python-3109/)
+- [Pip](https://pypi.org/project/pip/#files)
+- Re via `pip install re`
+
 #### Training:
-- Google Drive (minimum 4GB empty space)
-- Google Colab
-- HuggingFace account
+- [Google Drive](https://drive.google.com/) (minimum 4GB empty space)
+- [Google Colab](https://colab.research.google.com/)
+- [HuggingFace account](https://huggingface.co/)
+
 #### Bot Creation:
-- Discord account
-- Replit account
-- Uptime Robot account
+- [Discord account](https://discord.com/developers/applications)
+- [Replit account](https://replit.com/)
+- [UptimeRobot account](https://uptimerobot.com/)
+
+## Usage
+After having created a Kaggle account, you can download dialogue files or upload them to your google drive in order to manage editing them in a virtual environment. Python can be downloaded [here](https://www.python.org/downloads/release/python-3109/), its package manager pip can be found [here](https://pypi.org/project/pip/#files), a text library I used for trimming out dialogue can be downloaded with the simple terminal command `pip install re`. 
 
 
 TODO: 
