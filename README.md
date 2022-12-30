@@ -28,7 +28,9 @@ The notebook uploads its produced model to [HuggingFace](https://huggingface.co/
 - [UptimeRobot account](https://uptimerobot.com/)
 
 ## Usage
-After having created a Kaggle account, you can download dialogue files or upload them to your google drive in order to manage editing them in a virtual environment. Python can be downloaded [here](https://www.python.org/downloads/release/python-3109/), its package manager pip can be found [here](https://pypi.org/project/pip/#files), a text library I used for trimming out dialogue can be downloaded with the simple terminal command `pip install re`. 
+The first order of business is getting data to feed to the model. I used a dataset I found on Kaggle, but many other sites have `.csv` files of dialogue from a variety of shows, movies, and games. Keep in mind that `parse_data.py` was specifically tailored to the dataset I was using; it may require a little editing to work for your specific dataset. Once you have a satisfactory dataset, upload your `.csv` file and the `scottbot.ipynb` file to Google Drive.
+
+Before running the notebook, ensure that it can find your dialogue file by changing the `data = pd.read_csv("filename.csv")` to your particular filename along with the the value of `"CHARACTER_NAME"` to the appropriate name. Fun parameters to mess with are the number of lines included in line context (by default 7, denoted by variable `n`), `args.num_train_epochs`, `args.per_gpu_train_batch_size`, and `args.seed`. If you want speedier training or have little extra Google Drive space, I recommend changign the tokenizer and model to `microsoft/DialoGPT-small` (references inside of the `Args` class will have to be changed as well). At the very end of the notebook, there is authorization to provide: an email, your HuggingFace account name, a name for your model, and a HuggingFace API key (found under the Access Tokens tab in your HuggingFace Account settings. 
 
 
 TODO: 
