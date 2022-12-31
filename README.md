@@ -1,4 +1,5 @@
-# ScottBot <a name="readme-top"></a>
+# ScottBot <a name="readme-top"></a> <img src="img/scott_icon.png" alt="The bot himself" width="100" height="100" style="border-radius: 10px" align="right">
+
 A discord chatbot powered by gpt2 and flavored with dialogue from The Office.
 
 ## Description
@@ -76,6 +77,8 @@ After your repl is launched, a webview should open with a cursory webpage declar
 <br />
 
 Congratulations! You have successfully created an AI chatbot!
+<br /><br />
+<img src="img/scott_response.jpg" alt="bot response" style="border-radius: 10px" >
 <br />
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
