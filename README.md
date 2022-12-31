@@ -8,8 +8,8 @@ This repo provides all the code necessary for you to train Microsoft's [gpt2](ht
 Regarding the model itself, the model files I have included are the result of training the `gpt2-medium` model with dialogue from The Office found in [this kaggle dataset](https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines). I removed actions or asides (typically enclosed inside of brackets) from the data, along with discarding lines with more than 300 characters (trimming out long confessionals). Afterwards, I was left with close to 12,000 lines of Michael Scott dialogue alone, with thousands more for the rest of the characters.
 
 After I had a prepared dialogue `.csv` file, I loaded up a jupyter notebook I found on [freecodecamp](https://www.freecodecamp.org/news/make-a-discord-bot-that-talks-like-rick-sanchez/) to train the model. After a few training sessions I modified the following parameters:
-- Using the `gpt2-medium` model as a base
-- Reducing the `per_gpu_train_batch_size` to 2
+- Use the `gpt2-medium` model as a base
+- Reduce the `per_gpu_train_batch_size` to 2
 - Raise the `save_steps` amount to 10,000 (recommended for larger models)
 
 The notebook uploads its produced model to [HuggingFace](https://huggingface.co/), where there is a built-in API to run the model. But I wanted a fancier and more intuitive way to interact with the AI, so I created a discord bot and am hosting it on [replit](https://replit.com/), which is kept alive through the services of [UptimeRobot](https://uptimerobot.com/). 
@@ -23,7 +23,7 @@ The notebook uploads its produced model to [HuggingFace](https://huggingface.co/
 - [Pip](https://pypi.org/project/pip/#files)
 - Re via `pip install re`
 #### Training:
-- [Google Drive](https://drive.google.com/) (minimum 4GB empty space)
+- [Google Drive](https://drive.google.com/) (minimum 4 GB empty space)
 - [Google Colab](https://colab.research.google.com/)
 - [HuggingFace account](https://huggingface.co/)
 #### Bot Creation:
@@ -37,7 +37,7 @@ The notebook uploads its produced model to [HuggingFace](https://huggingface.co/
 <br />
 
 ### Source Data
-First, data is required to train the model. I used a dataset I found on Kaggle, but many other sites have `.csv` files of dialogue from a variety of shows, movies, and games. Keep in mind that `parse_data.py` was specifically tailored to the dataset I was using; it may require a little editing to work for your specific dataset. Once you have a satisfactory dataset, upload your `.csv` file and the `scottbot.ipynb` file to Google Drive.
+First, data is required to train the model. I used a dataset I found on Kaggle, but many other sites have `.csv` files of dialogue from a variety of shows, movies, and games. Keep in mind that `parse_data.py` was specifically tailored to the dataset I was using; it may require a little editing to work for your specific dataset. Once you have a satisfactory dataset, upload your `.csv` file and the `scottbot.ipynb` notebook to Google Drive.
 <br />
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -73,7 +73,7 @@ On the [discord developer portal](https://discord.com/developers/applications/),
 
 Once everything is configured, you should be able to hit the green "Run" button to launch your repl.
 
-After your repl is launched, a webview should open with a cursory webpage declaring that your bot is alive. If you log in to UptimeRobot, you can add a new monitor by using the webview's URL and the `http(s)` monitor option to keep your repl (and by proxy your bot) up and running even after you close your repl tab.
+After your repl is launched, a webview should open with a cursory webpage declaring that your bot is alive. If you log in to UptimeRobot, you can add a new monitor by using the webview's URL and the `http(s)` monitor option to keep your repl (and thus your bot) up and running even after you close your repl tab.
 <br />
 
 Congratulations! You have successfully created an AI chatbot!
@@ -89,7 +89,7 @@ Inside of `repl.it/index.js`, the API requst I use is preloaded with parameters 
 - `no_repeat_ngram_size`: prevent excessive word repetition (I set it to 5)
 - `top_k`: limits the breadth of word choice (I set it to 100)
 - `max_time`: returns after `int` amount of time if the bot hasn't already responded
-- `temperature`: while I did not include this one, this parameter has the most [personality influence](https://ai.stackexchange.com/questions/32477/what-is-the-temperature-in-the-gpt-models) on output. Low temperature are standard responses while high temperature contributes to wild responses. Standard temperature is usually between 0.7-0.9.
+- `temperature`: while I did not include this one in my request code, this parameter has the most [personality influence](https://ai.stackexchange.com/questions/32477/what-is-the-temperature-in-the-gpt-models) on output. Low temperature makes standard responses while high temperature contributes to wild responses. Standard temperature is usually between 0.7-0.9.
 
 By changing the API request parameters, you can change the behavior of the model without retraining it.
 <br />
