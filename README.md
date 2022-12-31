@@ -3,7 +3,7 @@
 A discord chatbot powered by gpt2 and flavored with dialogue from The Office.
 
 ## Description
-This repo provides all the code necessary for you to train Microsoft's [gpt2](https://huggingface.co/gpt2) text generation model to speak like any persona by providing it with dialogue as a `.csv` file. I have also included the files I use to run this bot on [replit](https://replit.com/) to communicate with the AI through discord.
+This repo provides all the code necessary for you to train Microsoft's [gpt2](https://huggingface.co/gpt2) text generation model to speak like any persona by providing it with dialogue as a `.csv` file. I have also included the files I use to run this bot on [replit](https://replit.com/) to communicate with the AI through discord. A quick note: the model's `.bin` file is too large to host here on Github, but it can be downloaded from [HuggingFace](https://huggingface.co/Chae/scottbot_med/blob/main/pytorch_model.bin).
 
 Regarding the model itself, the model files I have included are the result of training the `gpt2-medium` model with dialogue from The Office found in [this kaggle dataset](https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines). I removed actions or asides (typically enclosed inside of brackets) from the data, along with discarding lines with more than 300 characters (trimming out long confessionals). Afterwards, I was left with close to 12,000 lines of Michael Scott dialogue alone, with thousands more for the rest of the characters.
 
