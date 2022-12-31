@@ -82,6 +82,19 @@ Congratulations! You have successfully created an AI chatbot!
 <br />
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Detailed Model Parameters
+Inside of `repl.it/index.js`, the API requst I use is preloaded with parameters to change how the model responds to its text prompts. A full list of parameters can be found [here](https://huggingface.co/docs/api-inference/detailed_parameters#text-generation-task), but here are the ones I chose to implement and the reasons for their incluson: 
+- `do_sample`: forces randomized results
+- `use_cache`: prevents the bot from responding with identical answers in the same session
+- `no_repeat_ngram_size`: prevent excessive word repetition (I set it to 5)
+- `top_k`: limits the breadth of word choice (I set it to 100)
+- `max_time`: returns after `int` amount of time if the bot hasn't already responded
+- `temperature`: while I did not include this one, this parameter has the most [personality influence](https://ai.stackexchange.com/questions/32477/what-is-the-temperature-in-the-gpt-models) on output. Low temperature are standard responses while high temperature contributes to wild responses. Standard temperature is usually between 0.7-0.9.
+
+By changing the API request parameters, you can change the behavior of the model without retraining it.
+<br />
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Where Michael Goes From Here
 I would love to see any cool modifications of this project! Feel free to fork this repo and create a pull request. If you are interested in seeing any future developments of this project, don't forget to star this repo. I have a few ideas for extending the functionality of the bot that I have yet to implement. :)
 <br />
